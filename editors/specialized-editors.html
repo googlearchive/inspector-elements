@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </template>
 <script>
 
-Polymer('id-select-editor', {
+Polymer({
 
   root: null,
   idPrefix: '',
@@ -62,7 +62,7 @@ Polymer('id-select-editor', {
 <polymer-element name="target-select-editor" extends="id-select-editor">
 <script>
 
-Polymer('target-select-editor', {
+Polymer({
 
   idPrefix: '#'
 
@@ -79,7 +79,7 @@ Polymer('target-select-editor', {
 </template>
 <script>
 
-Polymer('action-editor', {
+Polymer({
 
   buttonClick: function() {
     var action = this.meta.action;

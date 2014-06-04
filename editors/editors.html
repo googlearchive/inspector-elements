@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <polymer-element name="abstract-editor" attributes="value">
 <script>
 
-Polymer('abstract-editor', {
+Polymer({
 
   value: '',
   meta: null,
@@ -78,7 +78,7 @@ Polymer('abstract-editor', {
 </template>
 <script>
 
-Polymer('string-editor', {
+Polymer({
 
   type: 'text',
 
@@ -94,7 +94,7 @@ Polymer('string-editor', {
 <polymer-element name="number-editor" extends="string-editor">
 <script>
 
-Polymer('number-editor', {
+Polymer({
 
   format: function(value) {
     return Number(value);
@@ -109,7 +109,7 @@ Polymer('number-editor', {
 <script>
 (function() {
 
-Polymer('color-editor', {
+Polymer({
 
   type: 'color',
 
@@ -168,7 +168,7 @@ function toHex(color) {
 </template>
 <script>
 
-Polymer('boolean-editor', {
+Polymer({
 
   inputChange: function(event) {
     this.workingValue = event.target.checked;
@@ -209,7 +209,7 @@ Polymer('boolean-editor', {
 // However, this creates an extra space in the select; see
 // due to https://github.com/toolkitchen/mdv/issues/56.
 // For that reason, we're manually iterating these nodes.
-Polymer('select-editor', {
+Polymer({
 
   metaChanged: function() {
     this.options = this.meta.options || [];
@@ -263,7 +263,7 @@ Polymer('select-editor', {
 </template>
 <script>
 
-Polymer('text-editor', {
+Polymer({
 
   workingValueChanged: function() {
     this.$.input.textContent = this.workingValue;
@@ -287,7 +287,7 @@ Polymer('text-editor', {
 </template>
 <script>
 
-Polymer('json-editor', {
+Polymer({
 
   workingValueChanged: function() {
     this.$.input.textContent = JSON.stringify(this.workingValue);
@@ -327,7 +327,7 @@ Polymer('json-editor', {
 </template>
 <script>
 
-Polymer('range-editor', {
+Polymer({
   min: 0,
   max: 1,
   step: 0.1,
@@ -356,7 +356,7 @@ Polymer('range-editor', {
 <polymer-element name="speech-editor" extends="string-editor">
 <script>
 
-Polymer('speech-editor', {
+Polymer({
 
   ready: function() {
     this.$.input.setAttribute('webkit-speech');
@@ -375,7 +375,7 @@ Polymer('speech-editor', {
 </template>
 <script>
 
-Polymer('compound-editor', {
+Polymer({
 
   options: ['px', 'pt', '%', 'em', 'rem', '']
 
@@ -388,7 +388,7 @@ Polymer('compound-editor', {
 <script>
 (function() {
 
-Polymer('classname-editor', {
+Polymer({
 
   blackList: ['selected-element'],
 
