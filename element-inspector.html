@@ -1,0 +1,43 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="object-inspector.html">
+<link rel="import" href="style-inspector.html">
+<link rel="import" href="../core-pages/core-pages.html">
+
+
+
+<polymer-element name="element-inspector" vertical layout attributes="inspected">
+<template>
+
+  <link rel="stylesheet" href="element-inspector.css">
+
+  <core-selector id="tabs" selected="{{selected}}">
+    <span>Properties</span>
+    <span>Styles</span>
+  </core-selector>
+  
+  <core-pages id="interior" flex selected="{{selected}}">
+    <object-inspector inspected="{{inspected}}"></object-inspector>
+    <style-inspector inspected="{{inspected}}"></style-inspector>
+  </core-pages>
+
+</template>
+<script>
+
+Polymer('element-inspector', {
+  
+  selected: 0,
+  inspected: null
+
+});
+
+</script>
+
+</polymer-element>
