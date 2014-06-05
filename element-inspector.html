@@ -9,9 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="object-inspector.html">
 <link rel="import" href="style-inspector.html">
+<link rel="import" href="layout-inspector.html">
 <link rel="import" href="../core-pages/core-pages.html">
-
-
 
 <polymer-element name="element-inspector" vertical layout attributes="inspected">
 <template>
@@ -25,7 +24,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   
   <core-pages id="interior" flex selected="{{selected}}">
     <object-inspector inspected="{{inspected}}"></object-inspector>
-    <style-inspector inspected="{{inspected}}"></style-inspector>
+    <div>
+      <layout-inspector inspected="{{inspected}}"></layout-inspector>
+      <style-inspector inspected="{{inspected}}"></style-inspector>
+    </div>
   </core-pages>
 
 </template>
