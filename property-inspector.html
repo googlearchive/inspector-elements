@@ -9,10 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="editors/property-editor.html">
 <link rel="import" href="binding.html">
-<link rel="import" href="../core-icon/core-icon.html">
+<link rel="import" href="../core-icons/core-icons.html">
 <link rel="import" href="../polymer-animation/polymer-animation.html">
 
-<polymer-element name="property-inspector" attributes="property nobind" 
+<polymer-element name="property-inspector" vertical layout attributes="property nobind" 
     on-editor-value-changed="{{valueChangedEvent}}">
 <template>
 
@@ -30,20 +30,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       margin-bottom: 0.5em;
     }
     #container {
-      display: inline-block;
-      width: 92%;
+      /*display: inline-block;
+      width: 100%;*/
     }
     core-icon#icon {
       opacity: 0.3;
       vertical-align: middle;
     }
     #iconContainer {
-      position: relative;
-      left: -10px;
-      padding: 10px;
-      display: inline-block;
-      vertical-align: middle;
       cursor: pointer;
+      margin-left: 8px;
     }
     
     #icon.binding {
@@ -57,10 +53,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   </style>
   <div class="property-name">{{property.meta.label || property.name}}</div>
-  <span id="container"><content></content></span>
-  <div id="iconContainer" on-click="{{linkTap}}" nodisplay?="{{nobind}}">
-    <core-icon id="icon" icon="link" size="16"></core-icon>
-  </div>  
+  <span id="container" flex horizontal center layout>
+    <content></content>
+    <div id="iconContainer" on-click="{{linkTap}}" nodisplay?="{{nobind}}">
+      <core-icon id="icon" icon="link" size="16"></core-icon>
+    </div>  
+  </span>
   <flip-out id="animOut" target="{{$.container}}" on-polymer-animation-end="{{animOutComplete}}"></flip-out>
   <flip-in id="animIn" target="{{$.container}}"></flip-in>
 
@@ -122,6 +120,7 @@ Polymer({
 
   makeEditor: function(tag) {
     this.editor = document.createElement(tag);
+    this.editor.setAttribute('flex', '');
     this.editor.cancelUnbindAll();
     this.editor.meta = {
       property: this.property,

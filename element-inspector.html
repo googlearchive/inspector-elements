@@ -12,21 +12,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="layout-inspector.html">
 <link rel="import" href="../core-pages/core-pages.html">
 
-<polymer-element name="element-inspector" vertical layout attributes="inspected">
+<polymer-element name="element-inspector" vertical layout attributes="selected nobind">
 <template>
 
   <link rel="stylesheet" href="element-inspector.css">
 
-  <core-selector id="tabs" selected="{{selected}}">
+  <core-selector id="tabs" selected="{{tabSelected}}">
     <span>Properties</span>
     <span>Styles</span>
   </core-selector>
   
-  <core-pages id="interior" flex selected="{{selected}}">
-    <object-inspector inspected="{{inspected}}"></object-inspector>
+  <core-pages id="interior" flex selected="{{tabSelected}}">
+    <object-inspector selected="{{selected}}" dirty="{{dirty}}" nobind="{{nobind}}"></object-inspector>
     <div>
-      <layout-inspector inspected="{{inspected}}"></layout-inspector>
-      <style-inspector inspected="{{inspected}}"></style-inspector>
+      <layout-inspector selected="{{selected}}" dirty="{{dirty}}"></layout-inspector>
+      <style-inspector selected="{{selected}}" dirty="{{dirty}}"></style-inspector>
     </div>
   </core-pages>
 
@@ -35,8 +35,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 Polymer({
   
-  selected: 0,
-  inspected: null
+  tabSelected: 0,
+  dirty: 0,
+  nobind: false,
+  selected: null,
+
+  forceUpdate: function() {
+    this.dirty++;
+  }
 
 });
 

@@ -5,7 +5,7 @@ license that can be found in the LICENSE file.
 */
 
 #interior > * {
-  padding: 8px;
+  padding: 8px 20px;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;

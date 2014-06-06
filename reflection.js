@@ -120,7 +120,10 @@ function reflectObjectProperties(obj) {
   var props = [];
   if (obj) {
     Object.keys(obj).forEach(function(name) {
-      props.push(reflectProperty(obj, name, {}));
+      var p = reflectProperty(obj, name, {});
+      if (p) {
+        props.push(p);
+      }
     });
   }
   return props;

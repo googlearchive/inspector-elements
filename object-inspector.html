@@ -13,11 +13,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="reflection.js"></script>
 
 
-<polymer-element name="object-inspector" vertical layout attributes="inspected">
+<polymer-element name="object-inspector" vertical layout attributes="selected dirty nobind">
 <template>
+  <style>
+    property-inspector {
+      padding: 4px;
+      box-sizing: border-box;
+    }
+  </style>
   <div>
-    <template repeat="{{properties}}">
-      <property-inspector property="{{}}" hidden?="{{meta.hidden}}"></property-inspector>
+    <template repeat="{{property in properties}}">
+      <property-inspector property="{{property}}" hidden?="{{property.meta.hidden}}" nobind="{{nobind}}"></property-inspector>
     </template>
   </div>
   <x-meta id="meta"></x-meta>
@@ -27,21 +33,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 Polymer({
   
-  inspected: null,
+  selected: null,
   properties: null,
 
-  inspectedChanged: function() {
-    this.update();
+  observe: {
+    'selected dirty': 'update'
   },
 
   update: function() {
     // meta-data attached here
-    if (this.inspected) {
-      if (this.inspected._getInspectorProps) {
-        var p$ = this.inspected._getInspectorProps();
+    if (this.selected) {
+      if (this.selected._getInspectorProps) {
+        var p$ = this.selected._getInspectorProps();
         this.properties = Reflection.objectProperties(p$);
       } else {
-       this.properties = Reflection.properties(this.inspected);
+       this.properties = Reflection.properties(this.selected);
       }
     } else {
       this.properties = [];

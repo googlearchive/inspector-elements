@@ -39,13 +39,13 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="string-editor" extends="abstract-editor">
+<polymer-element name="string-editor" horizontal center layout extends="abstract-editor">
 <template>
 
   <style>
     :host {
-      display: inline-block;
-      width: 95%;
+      /*display: inline-block;
+      /*width: 95%;*/*/
     }
     input {
       border: 1px solid #e4e4e4;
@@ -72,7 +72,7 @@ Polymer({
       background: #ededed;
     }
   </style>
-  <input id="input" type="{{type}}" value="{{workingValue}}" autocapitalize="off"
+  <input id="input" type="{{type}}" flex value="{{workingValue}}" autocapitalize="off"
     autocorrect="off" on-change="{{commit}}">
 
 </template>
@@ -180,7 +180,7 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="select-editor" extends="abstract-editor" attributes="options">
+<polymer-element name="select-editor" horizontal center layout extends="abstract-editor" attributes="options">
 <template>
 
   <style>
@@ -243,7 +243,7 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="text-editor" extends="abstract-editor">
+<polymer-element name="text-editor" horizontal center layout extends="abstract-editor">
 <template>
 
   <style>
@@ -302,7 +302,7 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="range-editor" extends="abstract-editor" attributes="min max step defaultValue">
+<polymer-element name="range-editor" horizontal center layout extends="abstract-editor" attributes="min max step defaultValue">
 <template>
 
   <style>
@@ -367,7 +367,7 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="compound-editor" extends="abstract-editor">
+<polymer-element name="compound-editor" horizontal center layout extends="abstract-editor">
 <template>
   <string-editor style="width: 90px;"></string-editor>
   <select-editor style="width: 70px;" options="{{options}}"></select-editor>

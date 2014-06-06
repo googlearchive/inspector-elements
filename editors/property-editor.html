@@ -53,7 +53,7 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="binding-editor" extends="abstract-editor">
+<polymer-element name="binding-editor" horizontal center layout extends="abstract-editor">
 <template>
   
   <style>
@@ -61,10 +61,14 @@ Polymer({
       display: block;
       white-space: nowrap;
     }
+
+    #idSelect {
+      margin-right: 8px;
+    }
   </style>
   <id-select-editor id="idSelect" style="width: 112px;" options="{{elements}}" value="{{target}}" on-editor-value-changed="{{editorValueChanged}}" ></id-select-editor>
   <!-- <select-editor style="width: 145px;" options="{{properties}}"></select-editor> -->
-  <string-editor style="width: 161px;" value="{{workingValue}}" on-editor-value-changed="{{editorValueChanged}}" ></string-editor>
+  <string-editor flex value="{{workingValue}}" on-editor-value-changed="{{editorValueChanged}}" ></string-editor>
 
 </template>
 <script>

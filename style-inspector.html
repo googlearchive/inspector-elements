@@ -12,19 +12,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <script src="reflection.js"></script>
 
-<polymer-element name="style-inspector" attributes="inspected">
+<polymer-element name="style-inspector" attributes="selected dirty">
 <template>
 
   <style>
     property-inspector {
       width: 33%;
+      padding: 4px;
+      box-sizing: border-box;
     }
 
     property-inspector.wide {
-      width: 66%;
+      width: 67%;
     }    
   </style>
-  <div horizontal start wrap layout>
+  <div horizontal wrap layout>
     <template repeat="{{property in properties}}">
       <property-inspector property="{{property}}" nobind class="{{ {wide: property.meta.wide} | tokenList }}"></property-inspector>
     </template>
@@ -50,8 +52,12 @@ Polymer({
 
   properties: null,
 
-  inspectedChanged: function() {
-    this.properties = Reflection.styles(this.inspected,
+  observe: {
+    'selected dirty': 'update'
+  },
+
+  update: function() {
+    this.properties = Reflection.styles(this.selected,
       this.$.meta.properties);
   }
 
