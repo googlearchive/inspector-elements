@@ -29,14 +29,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       /*font-weight: bold;*/
       margin-bottom: 0.5em;
     }
-    #container {
-      /*display: inline-block;
-      width: 100%;*/
-    }
+    
     core-icon#icon {
       opacity: 0.3;
-      vertical-align: middle;
+      cursor: pointer;
+      margin-left: 16px;
     }
+
     #iconContainer {
       cursor: pointer;
       margin-left: 8px;
@@ -55,9 +54,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <div class="property-name">{{property.meta.label || property.name}}</div>
   <span id="container" flex horizontal center layout>
     <content></content>
-    <div id="iconContainer" on-click="{{linkTap}}" nodisplay?="{{nobind}}">
-      <core-icon id="icon" icon="link" size="16"></core-icon>
-    </div>  
+    <core-icon id="icon" icon="link" on-tap="{{linkTap}}" size="20" nodisplay?="{{nobind}}"></core-icon>
   </span>
   <flip-out id="animOut" target="{{$.container}}" on-polymer-animation-end="{{animOutComplete}}"></flip-out>
   <flip-in id="animIn" target="{{$.container}}"></flip-in>
