@@ -61,7 +61,7 @@ function reflectProperties(element) {
   var props = [];
   if (element) {
     var found = {};
-    var meta = element.meta && element.meta.properties;
+    var meta = element._designMeta && element._designMeta.properties;
     meta = Platform.mixin({}, defaultMeta, meta);
 
     var hep = designWindow.HTMLElement.prototype;
