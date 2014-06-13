@@ -8,6 +8,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="object-inspector.html">
+<link rel="import" href="attributes-inspector.html">
 <link rel="import" href="style-inspector.html">
 <link rel="import" href="layout-inspector.html">
 <link rel="import" href="../core-pages/core-pages.html">
@@ -23,11 +24,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </core-selector>
   
   <core-pages id="interior" flex selected="{{tabSelected}}">
-    <object-inspector selected="{{selected}}" dirty="{{dirty}}" nobind="{{nobind}}"></object-inspector>
-    <div>
+    <section>
+      <object-inspector selected="{{selected}}" dirty="{{dirty}}" nobind="{{nobind}}"></object-inspector>
+      <attributes-inspector selected="{{selected}}" dirty="{{dirty}}"></attributes-inspector>
+    </section>
+    <section>
       <layout-inspector selected="{{selected}}" dirty="{{dirty}}"></layout-inspector>
       <style-inspector selected="{{selected}}" dirty="{{dirty}}"></style-inspector>
-    </div>
+    </section>
   </core-pages>
 
 </template>
