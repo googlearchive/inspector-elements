@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="editors/property-editor.html">
 <link rel="import" href="binding.html">
 <link rel="import" href="../core-icons/core-icons.html">
-<link rel="import" href="../polymer-animation/polymer-animation.html">
+<link rel="import" href="../core-animation/core-animation.html">
 
 <polymer-element name="property-inspector" vertical layout attributes="property nobind" 
     on-editor-value-changed="{{valueChangedEvent}}">
@@ -56,7 +56,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <content></content>
     <core-icon id="icon" icon="link" on-tap="{{linkTap}}" size="20" nodisplay?="{{nobind}}"></core-icon>
   </span>
-  <flip-out id="animOut" target="{{$.container}}" on-polymer-animation-end="{{animOutComplete}}"></flip-out>
+  <flip-out id="animOut" target="{{$.container}}" on-core-animation-end="{{animOutComplete}}"></flip-out>
   <flip-in id="animIn" target="{{$.container}}"></flip-in>
 
 </template>
@@ -162,7 +162,7 @@ Polymer({
 </script>
 </polymer-element>
 
-<polymer-element name="flip-out" extends="polymer-animation">
+<polymer-element name="flip-out" extends="core-animation">
 <script>
 
 Polymer('flip-out', {
