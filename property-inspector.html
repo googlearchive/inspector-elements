@@ -56,7 +56,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <content></content>
     <core-icon id="icon" icon="link" on-tap="{{linkTap}}" size="20" nodisplay?="{{nobind}}"></core-icon>
   </span>
-  <flip-out id="animOut" target="{{$.container}}" on-core-animation-end="{{animOutComplete}}"></flip-out>
+  <flip-out id="animOut" target="{{$.container}}" on-core-animation-finish="{{animOutComplete}}"></flip-out>
   <flip-in id="animIn" target="{{$.container}}"></flip-in>
 
 </template>
