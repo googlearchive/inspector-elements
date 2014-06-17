@@ -33,17 +33,18 @@ Polymer('attributes-inspector', {
     var attrs = {};
     var a$ = this.selected.attributes;
     for (var i=0, a; (a=a$[i]); i++) {
-      if (this.shouldIncludeAttribute(a.name, a.value)) {
+      if (!this.shouldExcludeAttribute(a.name, a.value)) {
         attrs[a.name] = a.value;
       }
     }
     this.selectedAttributes = attrs; 
   },
 
-  shouldIncludeAttribute: function(name, value) {
-    return this.blackList.indexOf(name) < 0 && 
-        (!this.selected.propertyForAttribute ||
-        !this.selected.propertyForAttribute(name));
+  shouldExcludeAttribute: function(name, value) {
+    return this.blackList.indexOf(name) >= 0 || 
+        (this.selected.propertyForAttribute &&
+        this.selected.propertyForAttribute(name)) ||
+        name.match(/^on-/);
   },
 
   selectedAttributesChanged: function() {
