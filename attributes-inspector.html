@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 Polymer('attributes-inspector', {
 
-  blackList: ['id', 'class', 'style', 'designmeta'],
+  blackList: ['id', 'class', 'style', 'designmeta', 'role', 'tabindex'],
   observe: {
     'selected dirty': 'update'
   },
@@ -44,7 +44,7 @@ Polymer('attributes-inspector', {
     return this.blackList.indexOf(name) >= 0 || 
         (this.selected.propertyForAttribute &&
         this.selected.propertyForAttribute(name)) ||
-        name.match(/^on-/);
+        name.match(/^(on-)|(aria)/);
   },
 
   selectedAttributesChanged: function() {
