@@ -89,16 +89,19 @@ Polymer({
   },
 
   format: function(value) {
+    // can't bind to nothing
+    if (!value) {
+      return '';
+    }
     var path = [];
+    // can't bind to self
     if (this.target == this.meta.property.obj.id) {
       this.target = '';
     }
     if (this.target) {
       path.push('$', this.target);
     }
-    if (value) {
-      path.push(value);
-    }
+    path.push(value);
     path = path.join('.');
     return path;
   },
@@ -117,6 +120,9 @@ Polymer({
 
   commit: function() {
     this.super();
+    if (!this.value) {
+      return;
+    }
     //console.log('binding-editor.bind-property: %s - %s', this.meta.property.name, this.value);
     this.fire('bind-property', {
       obj: this.meta.property.obj,
@@ -127,6 +133,7 @@ Polymer({
 
   /* commit an empty binding value when detached */
   unbind: function() {
+    this.value = '';
     this.fire('bind-property', {
       obj: this.meta.property.obj,
       name: this.meta.property.name,
