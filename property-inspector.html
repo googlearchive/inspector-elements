@@ -87,6 +87,16 @@ Polymer({
   },
 
   propertyChanged: function() {
+    this.updateBinding();
+    // discover editorTag
+    var type = (this.property.meta || 0).kind || typeof this.property.value;
+    this.editorTag = this.editorTags[type || typeof this.property.value] 
+        || type;
+    // update binding mode
+    this.updateBindingMode();
+  },
+
+  updateBinding: function() {
     // discover binding
     this.binding = Bindings.getBinding(this.property);
     // special handling for textContent
@@ -94,12 +104,6 @@ Polymer({
       this.binding = Bindings.getBinding(this.property.obj.firstChild,
         this.property.name);
     }
-    // discover editorTag
-    var type = (this.property.meta || 0).kind || typeof this.property.value;
-    this.editorTag = this.editorTags[type || typeof this.property.value] 
-        || type;
-    // update binding mode
-    this.updateBindingMode();
   },
 
   updateBindingMode: function() {
@@ -109,6 +113,7 @@ Polymer({
   bindingModeChanged: function(old) {
     if (old && this.editor) {
       this.editor.unbind();
+      this.updateBinding();
     }
     this.$.icon.classList.toggle('binding', this.bindingMode);
     this.makeEditor(this.bindingMode ? 'binding-editor' 
