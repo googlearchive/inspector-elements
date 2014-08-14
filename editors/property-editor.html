@@ -8,6 +8,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="editors.html">
+<link rel="import" href="specialized-editors.html">
 
 <polymer-element name="property-editor" attributes="editorTag propertyValue value">
 <template>
@@ -139,88 +140,6 @@ Polymer({
       name: this.meta.property.name,
       path: ''
     });
-  }
-
-});
-
-</script>
-</polymer-element>
-
-<polymer-element name="id-select-editor" extends="select-editor">
-<template>
-  <shadow></shadow>
-</template>
-<script>
-
-Polymer({
-  root: null,
-  idPrefix: '',
-
-  metaChanged: function() {
-    this.super();
-    this.root = this.findRoot(this.meta.obj);
-  },
-
-  rootChanged: function() {
-    this.buildOptions();
-  },
-
-  findRoot: function(node) {
-    while (node && node.id !== 'canvas') {
-      node = node.parentNode;
-    }
-    return node;
-  },
-
-  buildOptions: function() {
-    var o = [''];
-    if (this.root) {
-      var pre = this.idPrefix;
-      Array.prototype.forEach.call(this.root.querySelectorAll('[id]'), 
-        function(n) {
-          o.push(pre + n.id);
-        });
-    }
-    this.options = o;
-  },
-
-  get selectedNode() {
-    return this.root && this.value 
-        && this.root.querySelector('#' + this.value);
-  }
-
-});
-
-</script>
-</polymer-element>
-
-<polymer-element name="target-select-editor" extends="id-select-editor">
-<script>
-
-Polymer({
-
-  idPrefix: '#'
-
-});
-
-</script>
-</polymer-element>
-
-<polymer-element name="action-editor" extends="abstract-editor">
-<template>
-
-  <button touch-action="none" on-pointerup="{{buttonClick}}">{{meta.label}}</button>
-
-</template>
-<script>
-
-Polymer({
-
-  buttonClick: function() {
-    var action = this.meta.action;
-    if (this.meta.obj[action]) {
-      this.meta.obj[action]();
-    }
   }
 
 });

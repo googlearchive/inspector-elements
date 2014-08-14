@@ -11,14 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <polymer-element name="id-select-editor" extends="select-editor">
 <template>
-
   <shadow></shadow>
-
 </template>
 <script>
 
 Polymer({
-
   root: null,
   idPrefix: '',
 
@@ -32,7 +29,7 @@ Polymer({
   },
 
   findRoot: function(node) {
-    while (node && node.id !== 'canvas') {
+    while (node && !node.__designHost) {
       node = node.parentNode;
     }
     return node;
@@ -54,6 +51,7 @@ Polymer({
     return this.root && this.value 
         && this.root.querySelector('#' + this.value);
   }
+
 });
 
 </script>
@@ -89,6 +87,6 @@ Polymer({
   }
 
 });
-  
+
 </script>
 </polymer-element>

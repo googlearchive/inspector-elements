@@ -20,9 +20,6 @@ function reflectProperty(element, name, meta) {
     if (name[0] === '_' || name[name.length-1] === '_') {
       return;
     }
-    if (element.publish && element.publish[name] === undefined) {
-      return;
-    }
     var v = element[name];
     if (((v !== null
         && v !== undefined
