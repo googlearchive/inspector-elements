@@ -157,7 +157,7 @@ Polymer({
     this.$.container.selected = this.bindingMode ? 1 : 0;
     this.bindingMode = !this.bindingMode;
     // we are animating, flush now
-    Platform.flush();
+    Polymer.flush();
     // ending animation
     this.$.animIn.play();
   }
